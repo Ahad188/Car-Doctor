@@ -8,7 +8,9 @@ const Navber = () => {
      
      const handleLogOut = () => {
           logOut()
-          .then(() =>{})
+          .then(() =>{
+               localStorage.removeItem('car-token')
+          })
           .catch( error => console.log(error))
       }
 
