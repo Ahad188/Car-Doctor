@@ -2,6 +2,7 @@
 import img from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/Provider';
+import SochailLogin from '../Home/Shared/SochailLogin/SochailLogin';
 
 const Login = () => {
      const {signIn} = useContext(AuthContext)
@@ -18,22 +19,10 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                const loguser = {
-                    email : user.email,
-                }
-                console.log(loguser);
-                fetch(`http://localhost:5000/jwt`,{
-                    method:'POST',
-                    headers:{"content-type":"application/json"},
-                    body: JSON.stringify(loguser)
-                })
-                .then(res=>res.json())
-                .then(data=>{
-                    console.log("jwt responce", data);
-                    //wearing 
-                    localStorage.setItem('car-token', data.token)
-                     navigate(from, {replace:true})
-                })
+                
+                console.log(user);
+                navigate(from, {replace:true})
+               
                //  navigate(from, {replace:true})
             })
             .catch(error => console.log(error));
@@ -68,6 +57,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>New to Car Doctors <Link className='text-orange-600 font-bold' to="/singup">Sign Up</Link> </p>
+                        <SochailLogin></SochailLogin>
                     </div>
                 </div>
             </div>

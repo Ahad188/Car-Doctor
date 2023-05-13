@@ -8,32 +8,42 @@ import Bookings from "../Pages/Bookings/Bookings";
 import Private from "../Private/Private";
 
 const router = createBrowserRouter([
-     {
-       path: "/",
-       element: <Main></Main>,
-       children:[
-          {
-               path:'/',
-               element:<Home></Home>,
-          },{
-               path:'/login',
-               element:<Login></Login>
-          },
-          {
-               path:'singup',
-               element:<Singup></Singup>
-          },
-          {
-               path:'checkout/:id',
-               element:<Private><CheckOut></CheckOut></Private>,
-               loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
-          },
-          {
-               path:'bookings',
-               element:<Private><Bookings></Bookings></Private>
-          }
-       ]
-     },
-   ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "singup",
+        element: <Singup></Singup>,
+      },
+      {
+        path: "checkout/:id",
+        element: (
+          <Private>
+            <CheckOut></CheckOut>
+          </Private>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://car-doctor-server-beige.vercel.app/services/${params.id}`),
+      },
+      {
+        path: "bookings",
+        element: (
+          <Private>
+            <Bookings></Bookings>
+          </Private>
+        ),
+      },
+    ],
+  },
+]);
 
-   export default router;
+export default router;
