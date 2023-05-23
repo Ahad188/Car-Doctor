@@ -10,7 +10,7 @@ const Services = () => {
   useEffect(() => {
      // https://car-doctor-server-beige.vercel.app
      // https://car-doctor-server-beige.vercel.app
-    fetch(`https://car-doctor-server-beige.vercel.app/services?search=${search}&sort=${asc ? 'asc' : 'Desc'}`)
+    fetch(`https://car-doctor-server-ahad188.vercel.app/services?search=${search}&sort=${asc ? 'asc' : 'Desc'}`)
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [asc,search]);
